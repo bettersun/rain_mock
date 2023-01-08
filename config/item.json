@@ -1,0 +1,22 @@
+[
+  {
+    "path": "/bettersun/hello",
+    "method": "POST",
+    "useMock": false,
+    "destHost": "http://127.0.0.1:9527",
+    "duration": 500,
+    "statusCode": 500,
+    "responseFile": "_json/hello.json",
+    "description": ""
+  },
+  {
+    "path": "/bettersun/hello",
+    "method": "GET",
+    "useMock": true,
+    "destHost": "http://127.0.0.1:9527",
+    "duration": 200,
+    "statusCode": 200,
+    "responseFile": "_json/home.json",
+    "description": ""
+  }
+]

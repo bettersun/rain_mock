@@ -1,0 +1,32 @@
+# 此文件内容修改后需重启工具
+# 端口
+port: 51721
+# 日志文件
+logFile: mock.log
+# 日志等级
+# -1: DEBUG
+# 0: INFO  默认为INFO
+# 1: WARN
+# 2: ERROR
+# 3: FATAL
+logLevel: 0
+mock:
+  # 目标主机
+  destHost: http://127.0.0.1:952711
+  # Mock 项目文件
+  mockItemFile: config/item.json
+  # 使用 Mock 通用响应头 仅当URL对应的响应头不存在时使用
+  useCommonHeader: true
+path:
+  # 保存请求信息的相对位置（相对于工具所在目录）
+  request: _request
+  # 保存响应信息的相对位置（相对于工具所在目录）
+  response: _response
+  # 备份 Mock 项目的目录（相对于工具所在目录）
+  # 当保存改变后的 Mock 项目文件内容时，会先备份当前的 Mock 项目文件
+  backup: _backup
+  # 通用响应头部文件
+  commonHeaderFile: config/common_header.json
+  # 所有 API 的响应头部信息文件
+  # 文件位置为 response 配置的位置
+  responseHeaderFile: header.json
