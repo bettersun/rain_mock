@@ -1,6 +1,7 @@
 package mock
 
 import (
+	"bufio"
 	"bytes"
 	"compress/gzip"
 	"encoding/json"
@@ -16,11 +17,34 @@ import (
 
 // StartCommand 启动 Mock (命令行调用)
 func StartCommand() {
+	// 命令行执行时，需要下面这段代码
+	ch := make(chan string)
 	StartMock()
 	//log.Println(rain.CurrentDir())
 
-	// 命令行执行时，需要下面这段代码
-	ch := make(chan string)
+	go func() {
+		for {
+			reader := bufio.NewReader(os.Stdin)
+			s, err := reader.ReadByte()
+			if err != nil {
+				logger.Error("Input Error : %s\n", err)
+			}
+
+			if strings.Compare(string(s), "r") != 0 {
+				logger.Info("输入单字母 r 回车重新加载配置文件")
+			}
+
+			logger.Info("正在关闭服务。。。")
+			err = StopMock()
+			if err != nil {
+				logger.Error("关闭服务发生错误 : %s\n", err)
+			}
+			logger.Info("重新加载配置文件。")
+			initAll()
+			StartMock()
+		}
+	}()
+
 	<-ch
 }
 

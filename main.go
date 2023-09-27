@@ -5,6 +5,5 @@ import (
 )
 
 func main() {
-	go mock.Watch()
 	mock.StartCommand()
 }
