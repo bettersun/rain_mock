@@ -32,6 +32,7 @@ func StartCommand() {
 
 			if strings.Compare(string(s), "r") != 0 {
 				logger.Info("输入单字母 r 回车重新加载配置文件")
+				continue
 			}
 
 			logger.Info("正在关闭服务。。。")
